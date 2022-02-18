@@ -1,5 +1,6 @@
 import 'package:bookcompanion/AddBook/View/add_book.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -16,17 +17,30 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+        ),
         actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AddBook(),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
-              );
-            },
-            child: const Text('Add Book'),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddBook(),
+                  ),
+                );
+              },
+              child: const Text('Add Book'),
+            ),
           )
         ],
       ),

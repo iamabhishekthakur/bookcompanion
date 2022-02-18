@@ -45,7 +45,7 @@ class DefaultFirebaseOptions {
 
   static FirebaseOptions android = const FirebaseOptions(
     apiKey: 'AIzaSyBgelN0a27sGFbsEESvZqSqQqxPVtFfzqU',
-    appId: '1:524963782388:android:3bfd9bad32beaf5f9248a1',
+    appId: '1:524963782388:android:261fc01716d97d9b9248a1',
     messagingSenderId: '524963782388',
     projectId: 'bookcompanion',
     storageBucket: 'bookcompanion.appspot.com',

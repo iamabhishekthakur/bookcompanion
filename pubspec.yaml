@@ -36,13 +36,18 @@ dependencies:
   cupertino_icons: ^1.0.2
   # A package that allows you to use the native file explorer to pick single or multiple files, with extensions filtering support.
   file_picker: ^4.4.0
+  image_picker: ^0.8.4+9
   # A package to show Native PDF View for iOS and Android, support Open from a different resource like Path, Asset or Url and Cache it.
-  flutter_cached_pdfview: ^0.4.1
+  pdfx: ^2.0.1+1
   # Flutter Native Splash Screen Controllers
   flutter_native_splash: ^2.0.4
   # Firebase
   firebase_core: ^1.12.0
   cloud_firestore: ^3.1.8
+  firebase_storage: ^10.2.7
+  firebase_crashlytics: ^2.5.1
+  firebase_performance: ^0.8.0+5
+  firebase_auth: ^3.3.7
 
 dev_dependencies:
   flutter_test:
