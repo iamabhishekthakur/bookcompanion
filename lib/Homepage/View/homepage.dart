@@ -1,4 +1,5 @@
 import 'package:bookcompanion/AddBook/View/add_book.dart';
+import 'package:bookcompanion/Homepage/View/my_readings.dart';
 import 'package:bookcompanion/Homepage/View/public_library.dart';
 import 'package:bookcompanion/Profile/Bloc/profile_bloc.dart';
 import 'package:bookcompanion/Profile/Models/profile.dart';
@@ -19,6 +20,7 @@ class _HomepageState extends State<Homepage> {
   @override
   void initState() {
     profileBloc.fetchUserProfile();
+
     super.initState();
   }
 
@@ -63,7 +65,10 @@ class _HomepageState extends State<Homepage> {
                 ),
               ],
               flexibleSpace: FlexibleSpaceBar(
-                titlePadding: const EdgeInsets.symmetric(horizontal: 20),
+                titlePadding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
+                centerTitle: false,
                 title: StreamBuilder(
                     stream: profileBloc.profileData,
                     builder: (context, AsyncSnapshot<Profile> snapshot) {
@@ -80,6 +85,9 @@ class _HomepageState extends State<Homepage> {
             ),
             const SliverToBoxAdapter(
               child: PublicLibrary(),
+            ),
+            const SliverToBoxAdapter(
+              child: MyReadings(),
             ),
           ],
         ),

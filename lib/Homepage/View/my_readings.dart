@@ -1,59 +1,52 @@
-import 'package:bookcompanion/AddBook/Models/book.dart';
-import 'package:bookcompanion/Reading/View/book_detail.dart';
+import 'package:bookcompanion/Homepage/Models/reading_status.dart';
 import 'package:bookcompanion/Utils/color_constants.dart';
 import 'package:flutter/material.dart';
 
-import '../Bloc/public_library_bloc.dart';
+import '../Bloc/my_reading_bloc.dart';
 
-class PublicLibrary extends StatefulWidget {
-  const PublicLibrary({Key? key}) : super(key: key);
+class MyReadings extends StatefulWidget {
+  const MyReadings({Key? key}) : super(key: key);
 
   @override
-  _PublicLibraryState createState() => _PublicLibraryState();
+  _MyReadingsState createState() => _MyReadingsState();
 }
 
-class _PublicLibraryState extends State<PublicLibrary> {
+class _MyReadingsState extends State<MyReadings> {
   @override
   void initState() {
-    publicLibraryBloc.fetchPublicLibraryData();
+    myReadingBloc.fetchYourReadingBookStatus();
     super.initState();
   }
 
   @override
   void dispose() {
-    publicLibraryBloc.dispose();
+    myReadingBloc.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: publicLibraryBloc.publicLibraryBookData,
-        builder: (context, AsyncSnapshot<List<Book>> snapshot) {
+        stream: myReadingBloc.yourReadingBookData,
+        builder: (context, AsyncSnapshot<List<ReadingStatus>> snapshot) {
           if (!snapshot.hasData) {
             return const SizedBox();
           } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-            List<Book> data = snapshot.data!;
+            List<ReadingStatus> data = snapshot.data!;
             return Container(
               margin: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Public Library',
+                    children: const [
+                      Text(
+                        'My Readings',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.filter_list,
-                        ),
-                      )
                     ],
                   ),
                   const SizedBox(
@@ -67,14 +60,14 @@ class _PublicLibraryState extends State<PublicLibrary> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BookDetailView(
-                                bookData: data[index],
-                              ),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => BookDetailView(
+                          //       bookData: data[index],
+                          //     ),
+                          //   ),
+                          // );
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

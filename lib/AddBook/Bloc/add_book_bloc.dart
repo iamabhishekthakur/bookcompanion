@@ -34,7 +34,7 @@ class AddBookBloc {
           );
       ProgressIndicatorHandler().removeLoadingIndicator();
       Navigator.pop(CustomKey.navigatorKey.currentState!.context);
-      publicLibraryBloc.fetchAndListenForPublicBookDataChange();
+      publicLibraryBloc.fetchPublicLibraryData();
       SnackBarHandler().showSuccessMessage('Book added successfully');
     } catch (e) {
       debugPrint(e.toString());

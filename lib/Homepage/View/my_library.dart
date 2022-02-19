@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 import '../Bloc/public_library_bloc.dart';
 
-class PublicLibrary extends StatefulWidget {
-  const PublicLibrary({Key? key}) : super(key: key);
+class MyLibrary extends StatefulWidget {
+  const MyLibrary({Key? key}) : super(key: key);
 
   @override
-  _PublicLibraryState createState() => _PublicLibraryState();
+  _MyLibraryState createState() => _MyLibraryState();
 }
 
-class _PublicLibraryState extends State<PublicLibrary> {
+class _MyLibraryState extends State<MyLibrary> {
   @override
   void initState() {
     publicLibraryBloc.fetchPublicLibraryData();
@@ -42,7 +42,7 @@ class _PublicLibraryState extends State<PublicLibrary> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Public Library',
+                        'My Library',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

@@ -8,7 +8,7 @@ class PublicLibraryBloc {
       PublishSubject<List<Book>>();
   Stream<List<Book>> get publicLibraryBookData =>
       _publicLibraryDataPublisher.stream;
-  Future<void> fetchAndListenForPublicBookDataChange() async {
+  Future<void> fetchPublicLibraryData() async {
     List<Book> bookList = [];
     await FirebaseFirestore.instance
         .collection('books')
