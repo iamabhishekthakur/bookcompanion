@@ -3,7 +3,7 @@ import 'package:bookcompanion/Reading/View/book_detail.dart';
 import 'package:bookcompanion/Utils/color_constants.dart';
 import 'package:flutter/material.dart';
 
-import '../Bloc/public_library_bloc.dart';
+import '../Bloc/my_library_bloc.dart';
 
 class MyLibrary extends StatefulWidget {
   const MyLibrary({Key? key}) : super(key: key);
@@ -15,20 +15,20 @@ class MyLibrary extends StatefulWidget {
 class _MyLibraryState extends State<MyLibrary> {
   @override
   void initState() {
-    publicLibraryBloc.fetchPublicLibraryData();
+    myLibraryBloc.fetchMyLibraryData();
     super.initState();
   }
 
   @override
   void dispose() {
-    publicLibraryBloc.dispose();
+    myLibraryBloc.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: publicLibraryBloc.publicLibraryBookData,
+        stream: myLibraryBloc.myLibraryBookData,
         builder: (context, AsyncSnapshot<List<Book>> snapshot) {
           if (!snapshot.hasData) {
             return const SizedBox();

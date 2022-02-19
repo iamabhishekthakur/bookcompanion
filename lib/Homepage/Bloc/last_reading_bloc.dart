@@ -12,12 +12,12 @@ class LastReadingBloc {
     await FirebaseFirestore.instance
         .collection('users')
         .doc(
-          FirebaseAuth.instance.currentUser!.uid,
+          FirebaseAuth.instance.currentUser?.uid,
         )
         .get()
         .then((value) {
       ReadingStatus? readingStatus;
-      if (value.data()!.containsKey('last_reading_detail')) {
+      if (value.data()?.containsKey('last_reading_detail') ?? false) {
         readingStatus = ReadingStatus(
           id: value.get('last_reading_detail')['id'],
           title: value.get('last_reading_detail')['title'],

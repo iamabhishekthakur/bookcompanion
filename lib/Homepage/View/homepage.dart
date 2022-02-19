@@ -1,4 +1,5 @@
 import 'package:bookcompanion/AddBook/View/add_book.dart';
+import 'package:bookcompanion/Homepage/View/my_library.dart';
 import 'package:bookcompanion/Homepage/View/my_readings.dart';
 import 'package:bookcompanion/Homepage/View/public_library.dart';
 import 'package:bookcompanion/Profile/Bloc/profile_bloc.dart';
@@ -16,7 +17,9 @@ class Homepage extends StatefulWidget {
   _HomepageState createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomepageState extends State<Homepage>
+    with AutomaticKeepAliveClientMixin {
+  String userNickName = '';
   @override
   void initState() {
     profileBloc.fetchUserProfile();
@@ -26,6 +29,7 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -36,7 +40,7 @@ class _HomepageState extends State<Homepage> {
             SliverAppBar(
               automaticallyImplyLeading: false,
               title: const ProfilePictureView(),
-              pinned: true,
+              pinned: false,
               snap: true,
               floating: true,
               expandedHeight: 120.0,
@@ -72,8 +76,11 @@ class _HomepageState extends State<Homepage> {
                 title: StreamBuilder(
                     stream: profileBloc.profileData,
                     builder: (context, AsyncSnapshot<Profile> snapshot) {
+                      if (snapshot.data != null) {
+                        userNickName = snapshot.data!.nickName.split(' ').first;
+                      }
                       return Text(
-                        'Hey, ${snapshot.data != null ? snapshot.data!.nickName.split(' ').first : 'Stranger'}',
+                        'Hey, ${userNickName.isNotEmpty ? userNickName : 'Stranger'}',
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 20,
@@ -89,10 +96,16 @@ class _HomepageState extends State<Homepage> {
             const SliverToBoxAdapter(
               child: MyReadings(),
             ),
+            const SliverToBoxAdapter(
+              child: MyLibrary(),
+            ),
           ],
         ),
         floatingActionButton: const LastReadingContinueView(),
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

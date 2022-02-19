@@ -59,21 +59,48 @@ class LoginBloc {
         .set({
       'email': userCredential.user?.email,
       'name': userCredential.user?.displayName,
-      'selected_profile': userCredential.user?.photoURL,
+      'selected_profile': '',
       'created_at': DateTime.now().toUtc().toString(),
     });
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userCredential.user?.uid)
-        .collection('profiles')
-        .doc()
-        .set({
-      'nick_name': userCredential.user?.displayName,
-      'email': userCredential.user?.email,
-      'selected_profile': userCredential.user?.photoURL,
-      'created_at': DateTime.now().toUtc().toString(),
-      'modified_at': DateTime.now().toUtc().toString(),
-    });
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user?.uid)
+          .collection('profiles')
+          .where(
+            'email',
+            isEqualTo: userCredential.user?.email,
+          )
+          .get()
+          .then((value) async {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredential.user?.uid)
+            .collection('profiles')
+            .doc(value.docs[0].id)
+            .set({
+          'nick_name': userCredential.user?.displayName,
+          'email': userCredential.user?.email,
+          'profile_url': userCredential.user?.photoURL,
+          'created_at': DateTime.now().toUtc().toString(),
+          'modified_at': DateTime.now().toUtc().toString(),
+        });
+      });
+    } catch (e) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user?.uid)
+          .collection('profiles')
+          .doc()
+          .set({
+        'nick_name': userCredential.user?.displayName,
+        'email': userCredential.user?.email,
+        'profile_url': userCredential.user?.photoURL,
+        'created_at': DateTime.now().toUtc().toString(),
+        'modified_at': DateTime.now().toUtc().toString(),
+      });
+    }
+
     ProgressIndicatorHandler().removeLoadingIndicator();
     Navigator.push(
       CustomKey.navigatorKey.currentState!.context,

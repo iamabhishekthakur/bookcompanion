@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bookcompanion/AddBook/Models/book.dart';
 import 'package:bookcompanion/Homepage/Bloc/last_reading_bloc.dart';
+import 'package:bookcompanion/Homepage/Bloc/my_reading_bloc.dart';
 import 'package:bookcompanion/Homepage/Models/reading_status.dart';
 import 'package:bookcompanion/Reading/Bloc/reading_bloc.dart';
 import 'package:bookcompanion/Utils/color_constants.dart';
@@ -54,6 +55,7 @@ class _ReadingViewState extends State<ReadingView> {
             );
             lastReadingBloc.publishLastReadingDetail(readingStatus);
             readingBloc.updateReadingStatusOfBook(readingStatus);
+            myReadingBloc.fetchYourReadingBookStatus();
             Navigator.pop(context);
           },
           child: Container(

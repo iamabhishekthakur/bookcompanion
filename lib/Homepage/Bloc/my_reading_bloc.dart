@@ -12,7 +12,7 @@ class MyReadingBloc {
     List<ReadingStatus> bookListOfReadings = [];
     await FirebaseFirestore.instance
         .collection('users')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection('reading_status')
         .get()
         .then((event) {

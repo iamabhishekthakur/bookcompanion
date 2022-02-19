@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Book Companion',
       debugShowCheckedModeBanner: false,
       navigatorKey: CustomKey.navigatorKey,
       scaffoldMessengerKey: CustomKey.scaffoldMessengerKey,

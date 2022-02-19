@@ -23,7 +23,9 @@ class ProfileBloc {
         );
       }
     });
-    _profileDataPublisher.sink.add(profileList.first);
+    if (profileList.isNotEmpty) {
+      _profileDataPublisher.sink.add(profileList.first);
+    }
   }
 
   Future<void> uploadProfilePicture(String profileUrl) async {
