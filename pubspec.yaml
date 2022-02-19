@@ -38,16 +38,18 @@ dependencies:
   file_picker: ^4.4.0
   image_picker: ^0.8.4+9
   # A package to show Native PDF View for iOS and Android, support Open from a different resource like Path, Asset or Url and Cache it.
-  pdfx: ^2.0.1+1
-  # Flutter Native Splash Screen Controllers
-  flutter_native_splash: ^2.0.4
+  flutter_cached_pdfview: ^0.4.1
   # Firebase
   firebase_core: ^1.12.0
   cloud_firestore: ^3.1.8
   firebase_storage: ^10.2.7
-  firebase_crashlytics: ^2.5.1
-  firebase_performance: ^0.8.0+5
+#  firebase_crashlytics: ^2.5.1
+#  firebase_performance: ^0.8.0+5
   firebase_auth: ^3.3.7
+  # Others
+  flutter_svg: ^1.0.3
+  rxdart: ^0.27.3
+  flutter_linkify: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -72,8 +74,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+     - assets/images/
+     - assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
