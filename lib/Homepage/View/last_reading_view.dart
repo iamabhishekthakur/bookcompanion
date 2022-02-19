@@ -26,7 +26,7 @@ class _LastReadingContinueViewState extends State<LastReadingContinueView> {
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: lastReadingBloc.lastReadingData,
-      builder: (context, AsyncSnapshot<ReadingStatus> snapshot) {
+      builder: (context, AsyncSnapshot<ReadingStatus?> snapshot) {
         if (snapshot.data != null) {
           ReadingStatus readingStatusData = snapshot.data!;
           return InkWell(

@@ -15,7 +15,7 @@ class RegisterBloc {
         email: email,
         password: password,
       );
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('users')
           .doc(userCredential.user?.uid)
           .set({
@@ -24,7 +24,7 @@ class RegisterBloc {
         'selected_profile': '',
         'created_at': DateTime.now().toUtc().toString(),
       });
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('users')
           .doc(userCredential.user?.uid)
           .collection('profiles')

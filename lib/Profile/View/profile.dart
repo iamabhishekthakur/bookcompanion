@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../Homepage/Bloc/last_reading_bloc.dart';
 import '../../Utils/color_constants.dart';
 
 class ProfileView extends StatefulWidget {
@@ -186,6 +187,8 @@ class _LoggedInViewState extends State<LoggedInView> {
                     ),
                   ),
                   onPressed: () {
+                    lastReadingBloc.fetchLastReadingDetail();
+                    profileBloc.fetchUserProfile();
                     FirebaseAuth.instance.signOut();
                   },
                   child: const Text(

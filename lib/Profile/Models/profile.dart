@@ -26,7 +26,8 @@ class Profile {
   factory Profile.fromJson(Map<String, dynamic> json) => Profile(
         nickName: json["nick_name"],
         email: json["email"],
-        profileUrl: json["profile_url"],
+        profileUrl: json["profile_url"] ??
+            'https://lippianfamilydentistry.net/wp-content/uploads/2015/11/user-default.png',
         modifiedAt: json["modified_at"],
         createdAt: json["created_at"],
       );

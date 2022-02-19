@@ -235,7 +235,9 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                LoginBloc().signInWithGoogle();
+              },
               label: Text(
                 'Login with Google',
                 style: TextStyle(
