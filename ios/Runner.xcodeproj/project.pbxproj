@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -121,7 +121,6 @@
 				A6E1CB5F2ABE643B348CADCC /* Pods-Runner.release.xcconfig */,
 				F9357951F4540AF3DEA226E4 /* Pods-Runner.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,6 +139,7 @@
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				A5239C71D0A39C602B9AACC4 /* [CP] Embed Pods Frameworks */,
+				09169BA6CA84A47EA48E7435 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,6 +198,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		09169BA6CA84A47EA48E7435 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,8 +359,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -363,7 +381,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.bookcompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.askabhishekthakur.bookcompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -420,9 +438,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -470,8 +489,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -493,7 +513,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.bookcompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.askabhishekthakur.bookcompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -515,7 +535,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.bookcompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.askabhishekthakur.bookcompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
