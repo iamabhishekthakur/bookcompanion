@@ -61,33 +61,54 @@ class _ProfilePictureViewState extends State<ProfilePictureView> {
             return StreamBuilder(
                 stream: profileBloc.profileData,
                 builder: (context, AsyncSnapshot<Profile> snapshot) {
-                  return IconButton(
-                    icon: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        color: greyColor,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.network(
-                          snapshot.data?.profileUrl ?? '',
-                          fit: BoxFit.fill,
-                          errorBuilder: (context, object, stackTrace) =>
-                              const SizedBox(),
+                  if (snapshot.hasData) {
+                    return IconButton(
+                      icon: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          color: greyColor,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(
+                            snapshot.data?.profileUrl ?? '',
+                            fit: BoxFit.fill,
+                            errorBuilder: (context, object, stackTrace) =>
+                                const SizedBox(),
+                          ),
                         ),
                       ),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfileView(),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileView(),
+                          ),
+                        );
+                      },
+                    );
+                  } else {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileView(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          color: greyColor,
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                      );
-                    },
-                  );
+                      ),
+                    );
+                  }
                 });
           }
         });

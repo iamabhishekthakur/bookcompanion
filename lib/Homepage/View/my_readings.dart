@@ -1,7 +1,12 @@
+import 'dart:math';
+
+import 'package:bookcompanion/AddBook/Models/book.dart';
 import 'package:bookcompanion/Homepage/Models/reading_status.dart';
 import 'package:bookcompanion/Utils/color_constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../Reading/View/reading_view.dart';
+import '../../Utils/string_constants.dart';
 import '../Bloc/my_reading_bloc.dart';
 
 class MyReadings extends StatefulWidget {
@@ -60,14 +65,28 @@ class _MyReadingsState extends State<MyReadings> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => InkWell(
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => BookDetailView(
-                          //       bookData: data[index],
-                          //     ),
-                          //   ),
-                          // );
+                          ReadingStatus readingStatusData = data[index];
+
+                          Book bookData = Book(
+                            id: readingStatusData.id,
+                            title: readingStatusData.title,
+                            author: readingStatusData.author,
+                            fileUrl: readingStatusData.fileUrl,
+                            categoryTitle: '',
+                            addedByUserId: '',
+                            insertTs: '',
+                            keepBookPrivate: false,
+                            coverPictureUrl: '',
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ReadingView(
+                                bookData: bookData,
+                                initialPage: readingStatusData.currentPage,
+                              ),
+                            ),
+                          );
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,7 +107,7 @@ class _MyReadingsState extends State<MyReadings> {
                                   ),
                                 ),
                                 child: Image.network(
-                                  'https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzdHJhY3R8ZW58MHx8MHx8&w=1000&q=80',
+                                  listOfCoverPicture[Random().nextInt(10)],
                                   fit: BoxFit.cover,
                                 ),
                               ),

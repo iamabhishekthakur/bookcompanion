@@ -1,4 +1,5 @@
 import 'package:bookcompanion/AddBook/Models/book.dart';
+import 'package:bookcompanion/Homepage/Bloc/my_library_bloc.dart';
 import 'package:bookcompanion/Homepage/Bloc/public_library_bloc.dart';
 import 'package:bookcompanion/Utils/snackbar_handler.dart';
 import 'package:bookcompanion/config.dart';
@@ -35,6 +36,7 @@ class AddBookBloc {
       ProgressIndicatorHandler().removeLoadingIndicator();
       Navigator.pop(CustomKey.navigatorKey.currentState!.context);
       publicLibraryBloc.fetchPublicLibraryData();
+      myLibraryBloc.fetchMyLibraryData();
       SnackBarHandler().showSuccessMessage('Book added successfully');
     } catch (e) {
       debugPrint(e.toString());

@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:bookcompanion/AddBook/Models/book.dart';
 import 'package:bookcompanion/Reading/View/book_detail.dart';
 import 'package:bookcompanion/Utils/color_constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../Utils/string_constants.dart';
 import '../Bloc/public_library_bloc.dart';
 
 class PublicLibrary extends StatefulWidget {
@@ -95,7 +98,7 @@ class _PublicLibraryState extends State<PublicLibrary> {
                                   ),
                                 ),
                                 child: Image.network(
-                                  'https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzdHJhY3R8ZW58MHx8MHx8&w=1000&q=80',
+                                  listOfCoverPicture[Random().nextInt(10)],
                                   fit: BoxFit.cover,
                                 ),
                               ),

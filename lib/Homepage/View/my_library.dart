@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:bookcompanion/AddBook/Models/book.dart';
 import 'package:bookcompanion/Reading/View/book_detail.dart';
 import 'package:bookcompanion/Utils/color_constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../Utils/string_constants.dart';
 import '../Bloc/my_library_bloc.dart';
 
 class MyLibrary extends StatefulWidget {
@@ -40,20 +43,20 @@ class _MyLibraryState extends State<MyLibrary> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
+                    children: const [
+                      Text(
                         'My Library',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.filter_list,
-                        ),
-                      )
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   icon: const Icon(
+                      //     Icons.filter_list,
+                      //   ),
+                      // )
                     ],
                   ),
                   const SizedBox(
@@ -95,7 +98,7 @@ class _MyLibraryState extends State<MyLibrary> {
                                   ),
                                 ),
                                 child: Image.network(
-                                  'https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzdHJhY3R8ZW58MHx8MHx8&w=1000&q=80',
+                                  listOfCoverPicture[Random().nextInt(10)],
                                   fit: BoxFit.cover,
                                 ),
                               ),

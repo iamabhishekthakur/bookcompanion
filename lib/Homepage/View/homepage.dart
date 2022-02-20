@@ -69,9 +69,7 @@ class _HomepageState extends State<Homepage>
                 ),
               ],
               flexibleSpace: FlexibleSpaceBar(
-                titlePadding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
+                titlePadding: const EdgeInsets.only(left: 20, top: 120),
                 centerTitle: false,
                 title: StreamBuilder(
                     stream: profileBloc.profileData,
