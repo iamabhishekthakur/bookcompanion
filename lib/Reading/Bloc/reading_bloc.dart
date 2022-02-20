@@ -7,7 +7,7 @@ class ReadingBloc {
   Future<void> updateReadingStatusOfBook(ReadingStatus readingStatus) async {
     FirebaseFirestore.instance
         .collection('users')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection('profiles')
         .doc(await sharedPreferenceHandler.getSelectedProfileID())
         .collection('readings_list')

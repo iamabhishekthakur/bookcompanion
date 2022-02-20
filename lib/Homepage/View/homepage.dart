@@ -1,14 +1,15 @@
 import 'package:bookcompanion/AddBook/View/add_book.dart';
 import 'package:bookcompanion/Homepage/View/my_library.dart';
-import 'package:bookcompanion/Homepage/View/my_readings.dart';
 import 'package:bookcompanion/Homepage/View/public_library.dart';
 import 'package:bookcompanion/Profile/Bloc/profile_bloc.dart';
 import 'package:bookcompanion/Profile/Models/profile.dart';
 import 'package:bookcompanion/Profile/View/profile_picture.dart';
+import 'package:bookcompanion/Utils/shared_preference_handler.dart';
 import 'package:flutter/material.dart';
 
 import '../../Utils/color_constants.dart';
 import 'last_reading_view.dart';
+import 'my_readings.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -92,36 +93,64 @@ class _HomepageState extends State<Homepage>
               child: PublicLibrary(),
             ),
             SliverToBoxAdapter(
-              child: userNickName.isNotEmpty
-                  ? const MyReadings()
-                  : Container(
-                      margin:
-                          const EdgeInsets.only(left: 50, right: 50, top: 100),
-                      child: const Text(
-                        'Login to start managing your book reading.',
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontStyle: FontStyle.italic,
-                          fontSize: 15,
+              child: FutureBuilder(
+                future: sharedPreferenceHandler.getSelectedProfileID(),
+                builder:
+                    (BuildContext context, AsyncSnapshot<String?> snapshot) {
+                  if (snapshot.data == null) {
+                    return const SizedBox();
+                  } else if (snapshot.data != 'NA') {
+                    return const MyReadings();
+                  } else {
+                    if (snapshot.data == 'NA') {
+                      return Container(
+                        margin: const EdgeInsets.only(
+                            left: 50, right: 50, top: 100),
+                        child: const Text(
+                          'Login to start managing your book reading.',
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.italic,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  }
+                },
+              ),
             ),
             SliverToBoxAdapter(
-              child: userNickName.isNotEmpty
-                  ? const MyLibrary()
-                  : Container(
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 10),
-                      child: const Text(
-                        'Add book and keep it private, so that it will appear for you only.',
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontStyle: FontStyle.italic,
-                          fontSize: 15,
+              child: FutureBuilder(
+                future: sharedPreferenceHandler.getSelectedProfileID(),
+                builder:
+                    (BuildContext context, AsyncSnapshot<String?> snapshot) {
+                  if (snapshot.data == null) {
+                    return const SizedBox();
+                  } else if (snapshot.data != 'NA') {
+                    return const MyLibrary();
+                  } else {
+                    if (snapshot.data == 'NA') {
+                      return Container(
+                        margin: const EdgeInsets.only(
+                            left: 50, right: 50, top: 100),
+                        child: const Text(
+                          'Add book and keep it private, so that it will appear for you only.',
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.italic,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  }
+                },
+              ),
             ),
           ],
         ),

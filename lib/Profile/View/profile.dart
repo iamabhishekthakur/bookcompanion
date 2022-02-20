@@ -2,6 +2,8 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:bookcompanion/Authentication/View/login.dart';
+import 'package:bookcompanion/Homepage/Bloc/my_library_bloc.dart';
+import 'package:bookcompanion/Homepage/Bloc/my_reading_bloc.dart';
 import 'package:bookcompanion/Profile/Bloc/profile_bloc.dart';
 import 'package:bookcompanion/Profile/Models/profile.dart';
 import 'package:bookcompanion/Utils/shared_preference_handler.dart';
@@ -188,8 +190,11 @@ class _LoggedInViewState extends State<LoggedInView> {
                     ),
                   ),
                   onPressed: () {
+                    sharedPreferenceHandler.setSelectedProfileID('NA');
                     lastReadingBloc.fetchLastReadingDetail();
                     profileBloc.fetchUserProfile();
+                    myLibraryBloc.fetchMyLibraryData();
+                    myReadingBloc.fetchYourReadingBookStatus();
                     FirebaseAuth.instance.signOut();
                   },
                   child: const Text(

@@ -41,7 +41,7 @@ class LastReadingBloc {
     FirebaseFirestore.instance
         .collection('users')
         .doc(
-          FirebaseAuth.instance.currentUser!.uid,
+          FirebaseAuth.instance.currentUser?.uid,
         )
         .collection('profiles')
         .doc(await sharedPreferenceHandler.getSelectedProfileID())

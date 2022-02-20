@@ -10,7 +10,7 @@ class SharedPreferenceHandler {
 
   Future<String?> getSelectedProfileID() async {
     _sharedPreferences = await SharedPreferences.getInstance();
-    return _sharedPreferences.getString('selected_profile_id');
+    return _sharedPreferences.getString('selected_profile_id') ?? 'NA';
   }
 }
 
