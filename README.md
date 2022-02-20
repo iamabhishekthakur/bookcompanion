@@ -8,9 +8,9 @@
 
 # Upcoming Features
 
-- Notification for book reading
-- Profile management
-- Filter by Genres (Public Library)
+- Filter by Genres (Public Library)  - In Progress
+- Notification for book reading - Not Yet Started
+- Profile management - Not Yet Started
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
