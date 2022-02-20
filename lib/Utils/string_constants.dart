@@ -57,3 +57,16 @@ List genresList = [
   'Young adult',
   'True crime',
 ];
+
+List<String> listOfCoverPicture = [
+  'https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzdHJhY3R8ZW58MHx8MHx8&w=1000&q=80',
+  'https://www.stockvault.net//data/2019/04/19/264047/thumb16.jpg',
+  'https://cdn.pixabay.com/photo/2017/12/25/16/16/creativity-3038628_960_720.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNLforO670O_zXnVP0vtBQ752CbT3QiLK-JA&usqp=CAU',
+  'https://images.wallpapersden.com/image/download/abstract-shapes-2021-minimalist_bG1lZm6UmZqaraWkpJRmbmdmrWZlbWY.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhZ_pzW09AGZ3G_2HstkuZa8hB7DQCbb0Um8yAdE6trXeNlrXSOHsnpyXDoxgt_0_ziy0&usqp=CAU',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYDh7EgwvDvHW5D_tUj7JFMJQbOsfGmUeuLuRQAgLlNC1vx4-sOL7PzsKcEkYnNQAVEsY&usqp=CAU',
+  'https://images.unsplash.com/photo-1541701571234-ffe036ddf1d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHw%3D&w=1000&q=80',
+  'https://media.istockphoto.com/photos/abstract-holographic-3d-wavy-background-picture-id1248340759?k=20&m=1248340759&s=612x612&w=0&h=PTinqLmqoYBhGf-sSeB1bukwyze9HZkS4cki6B2px14=',
+  'https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&dpr=1&w=500'
+];

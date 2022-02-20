@@ -12,15 +12,13 @@ class MyLibraryBloc {
     List<Book> bookList = [];
     await FirebaseFirestore.instance
         .collection('books')
-        .where(
-          'keep_book_private',
-          isEqualTo: true,
-        )
+        // .where(
+        //   'keep_book_private',
+        //   isEqualTo: true,
+        // )
         .where(
           'added_by_user_id',
           isEqualTo: FirebaseAuth.instance.currentUser?.uid,
-          isNotEqualTo: '',
-          isNull: true,
         )
         .get()
         .then((event) {
@@ -35,6 +33,7 @@ class MyLibraryBloc {
             addedByUserId: doc.get('added_by_user_id'),
             insertTs: doc.get('insert_ts'),
             keepBookPrivate: doc.get('keep_book_private'),
+            coverPictureUrl: doc.get('cover_picture_url'),
           ),
         );
       }

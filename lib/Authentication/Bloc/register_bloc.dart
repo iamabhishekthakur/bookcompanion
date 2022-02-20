@@ -21,7 +21,6 @@ class RegisterBloc {
           .set({
         'email': email,
         'name': name,
-        'selected_profile': '',
         'created_at': DateTime.now().toUtc().toString(),
       });
       await FirebaseFirestore.instance

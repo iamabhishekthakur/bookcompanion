@@ -1,4 +1,5 @@
 import 'package:bookcompanion/Profile/Models/profile.dart';
+import 'package:bookcompanion/Utils/shared_preference_handler.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
@@ -17,14 +18,20 @@ class ProfileBloc {
         .then((value) {
       for (var doc in value.docs) {
         profileList.add(
-          Profile.fromJson(
-            doc.data(),
+          Profile(
+            id: doc.id,
+            nickName: doc.get('nick_name'),
+            email: doc.get('email'),
+            profileUrl: doc.get('profile_url'),
+            modifiedAt: doc.get('modified_at'),
+            createdAt: doc.get('created_at'),
           ),
         );
       }
     });
     if (profileList.isNotEmpty) {
       _profileDataPublisher.sink.add(profileList.first);
+      sharedPreferenceHandler.setSelectedProfileID(profileList.first.id);
     }
   }
 
@@ -33,20 +40,12 @@ class ProfileBloc {
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection('profiles')
-        .get()
-        .then((value) async {
-      // This logic will change when multiple profile support will be added
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser?.uid)
-          .collection('profiles')
-          .doc(value.docs.first.id)
-          .update({
-        'profile_url': profileUrl,
-        'modified_at': DateTime.now().toUtc().toString(),
-      });
-      profileBloc.fetchUserProfile();
+        .doc(await sharedPreferenceHandler.getSelectedProfileID())
+        .update({
+      'profile_url': profileUrl,
+      'modified_at': DateTime.now().toUtc().toString(),
     });
+    profileBloc.fetchUserProfile();
   }
 
   void dispose() {

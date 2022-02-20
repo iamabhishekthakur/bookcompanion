@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:bookcompanion/AddBook/Bloc/add_book_bloc.dart';
@@ -11,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../Utils/snackbar_handler.dart';
+import '../../Utils/string_constants.dart';
 
 class AddBook extends StatefulWidget {
   const AddBook({Key? key}) : super(key: key);
@@ -32,6 +34,7 @@ class _AddBookState extends State<AddBook> {
     insertTs: '',
     keepBookPrivate: false,
     id: '',
+    coverPictureUrl: listOfCoverPicture[Random().nextInt(10)],
   );
 
   String selectedFileName = '';

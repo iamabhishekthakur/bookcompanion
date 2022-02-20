@@ -16,6 +16,7 @@ class Book {
     required this.title,
     required this.author,
     required this.fileUrl,
+    required this.coverPictureUrl,
     required this.categoryTitle,
     required this.addedByUserId,
     required this.insertTs,
@@ -26,6 +27,7 @@ class Book {
   String title;
   String author;
   String fileUrl;
+  String coverPictureUrl;
   String categoryTitle;
   String addedByUserId;
   String insertTs;
@@ -36,6 +38,7 @@ class Book {
         title: json["title"],
         author: json["author"],
         fileUrl: json["file_url"],
+        coverPictureUrl: json["cover_picture_url"],
         categoryTitle: json["category_title"],
         addedByUserId: json["added_by_user_id"],
         insertTs: json["insert_ts"],
@@ -47,6 +50,7 @@ class Book {
         "title": title,
         "author": author,
         "file_url": fileUrl,
+        "cover_picture_url": coverPictureUrl,
         "category_title": categoryTitle,
         "added_by_user_id": addedByUserId,
         "insert_ts": insertTs,

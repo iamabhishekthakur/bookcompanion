@@ -93,11 +93,37 @@ class _HomepageState extends State<Homepage>
             const SliverToBoxAdapter(
               child: PublicLibrary(),
             ),
-            const SliverToBoxAdapter(
-              child: MyReadings(),
+            SliverToBoxAdapter(
+              child: userNickName.isNotEmpty
+                  ? const MyReadings()
+                  : Container(
+                      margin:
+                          const EdgeInsets.only(left: 50, right: 50, top: 100),
+                      child: const Text(
+                        'Login to start managing your book reading.',
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
             ),
-            const SliverToBoxAdapter(
-              child: MyLibrary(),
+            SliverToBoxAdapter(
+              child: userNickName.isNotEmpty
+                  ? const MyLibrary()
+                  : Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 10),
+                      child: const Text(
+                        'Add book and keep it private, so that it will appear for you only.',
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
             ),
           ],
         ),

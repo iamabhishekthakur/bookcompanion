@@ -29,6 +29,7 @@ class PublicLibraryBloc {
             addedByUserId: doc.get('added_by_user_id'),
             insertTs: doc.get('insert_ts'),
             keepBookPrivate: doc.get('keep_book_private'),
+            coverPictureUrl: doc.get('cover_picture_url'),
           ),
         );
       }

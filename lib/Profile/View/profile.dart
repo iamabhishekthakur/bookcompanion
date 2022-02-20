@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:bookcompanion/Authentication/View/login.dart';
 import 'package:bookcompanion/Profile/Bloc/profile_bloc.dart';
 import 'package:bookcompanion/Profile/Models/profile.dart';
+import 'package:bookcompanion/Utils/shared_preference_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -104,7 +105,7 @@ class _LoggedInViewState extends State<LoggedInView> {
                       Uint8List fileBytes = file.readAsBytesSync();
                       Reference firebaseStorageRef =
                           FirebaseStorage.instance.ref().child(
-                                'profile_pictures/${file.path.split('/').last}',
+                                'profile_pictures/${FirebaseAuth.instance.currentUser?.uid}/${await sharedPreferenceHandler.getSelectedProfileID()}/${file.path.split('/').last}',
                               );
                       UploadTask uploadTask =
                           firebaseStorageRef.putData(fileBytes);

@@ -1,4 +1,5 @@
 import 'package:bookcompanion/Homepage/Models/reading_status.dart';
+import 'package:bookcompanion/Utils/shared_preference_handler.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
@@ -14,6 +15,8 @@ class LastReadingBloc {
         .doc(
           FirebaseAuth.instance.currentUser?.uid,
         )
+        .collection('profiles')
+        .doc(await sharedPreferenceHandler.getSelectedProfileID())
         .get()
         .then((value) {
       ReadingStatus? readingStatus;
@@ -40,6 +43,8 @@ class LastReadingBloc {
         .doc(
           FirebaseAuth.instance.currentUser!.uid,
         )
+        .collection('profiles')
+        .doc(await sharedPreferenceHandler.getSelectedProfileID())
         .update(
       {
         'last_reading_detail': readingStatus.toJson(),

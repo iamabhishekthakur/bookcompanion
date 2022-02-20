@@ -10,13 +10,14 @@ String profileToJson(Profile data) => json.encode(data.toJson());
 
 class Profile {
   Profile({
+    required this.id,
     required this.nickName,
     required this.email,
     required this.profileUrl,
     required this.modifiedAt,
     required this.createdAt,
   });
-
+  String id;
   String nickName;
   String email;
   String profileUrl;
@@ -24,6 +25,7 @@ class Profile {
   String createdAt;
 
   factory Profile.fromJson(Map<String, dynamic> json) => Profile(
+        id: json["id"],
         nickName: json["nick_name"],
         email: json["email"],
         profileUrl: json["profile_url"] ??
@@ -33,6 +35,7 @@ class Profile {
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "nick_name": nickName,
         "email": email,
         "profile_url": profileUrl,

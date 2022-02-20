@@ -1,4 +1,5 @@
 import 'package:bookcompanion/Homepage/Models/reading_status.dart';
+import 'package:bookcompanion/Utils/shared_preference_handler.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
@@ -13,7 +14,9 @@ class MyReadingBloc {
     await FirebaseFirestore.instance
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser?.uid)
-        .collection('reading_status')
+        .collection('profiles')
+        .doc(await sharedPreferenceHandler.getSelectedProfileID())
+        .collection('readings_list')
         .get()
         .then((event) {
       for (var doc in event.docs) {

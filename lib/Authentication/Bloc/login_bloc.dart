@@ -59,7 +59,6 @@ class LoginBloc {
         .set({
       'email': userCredential.user?.email,
       'name': userCredential.user?.displayName,
-      'selected_profile': '',
       'created_at': DateTime.now().toUtc().toString(),
     });
     try {

@@ -40,6 +40,7 @@ class _LastReadingContinueViewState extends State<LastReadingContinueView> {
                 addedByUserId: '',
                 insertTs: '',
                 keepBookPrivate: false,
+                coverPictureUrl: '',
               );
               Navigator.push(
                 context,
