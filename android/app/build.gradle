@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -56,6 +56,22 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+//    configurations {
+//        all*.exclude module: 'android-pdf-viewer'
+//    }
+
+//    packagingOptions {
+//        pickFirst 'lib/x86/libc++_shared.so'
+//        pickFirst 'lib/x86_64/libjsc.so'
+//        pickFirst 'lib/arm64-v8a/libjsc.so'
+//        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+//        pickFirst 'lib/x86_64/libc++_shared.so'
+//        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+//    }
+
+
+
 }
 
 flutter {
@@ -65,4 +81,6 @@ flutter {
 dependencies {
     implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
 }
